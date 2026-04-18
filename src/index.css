@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --bg: #050505;
+  --card-bg: #0d0d0e;
+  --accent: #0d9488; /* Teal 600 */
+  --accent-vibrant: #14b8a6; /* Teal 500 */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border: #134e4a; /* Teal 900 */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none; /* Hide default for custom cursor */
+}
+
+a, button {
+  cursor: none;
+}
+
+@layer base {
+  h2 {
+    @apply text-[0.75rem] uppercase tracking-[0.1em] text-[var(--text-secondary)] mb-4 flex items-center gap-2;
+  }
+  h2::after {
+    content: '';
+    @apply h-[1px] flex-1 bg-[var(--border)];
+  }
+}
+
+.card {
+  @apply bg-[var(--card-bg)] border border-[var(--border)] rounded-[12px] p-5;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #134e4a;
+  border-radius: 10px;
+}
+
+/* Custom Cursor Styles */
+#custom-cursor {
+  width: 24px;
+  height: 24px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease-out;
+}
+
+#custom-cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+}
